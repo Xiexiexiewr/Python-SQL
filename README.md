@@ -6,7 +6,7 @@
 
 刷题内容：[每日刷题题目 + 总结](https://shimo.im/sheets/9gXkgRidBMAS9tvU/55KPh)
 
-##* 推荐博客
+**推荐博客**
   * 技术博客，关于算法、数据结构和一些面试的基础知识：https://imageslr.github.io/
   * 关于链表和相应面试题的技术文档，写得很不错：https://leetcode-cn.com/circle/article/Ej98dm/
   * 前端进阶算法10：别再说你不懂topk问题了：https://github.com/sisterAn/JavaScript-Algorithms/issues/73
