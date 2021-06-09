@@ -1,0 +1,66 @@
+#### [570. 至少有5名直接下属的经理](https://leetcode-cn.com/problems/managers-with-at-least-5-direct-reports/)
+
+来源：力扣（LeetCode）
+
+Employee 表包含所有员工和他们的经理。每个员工都有一个 Id，并且还有一列是经理的 Id。
+
++------+----------+-----------+----------+
+|Id    |Name 	  |Department |ManagerId |
++------+----------+-----------+----------+
+|101   |John 	  |A 	      |null      |
+|102   |Dan 	  |A 	      |101       |
+|103   |James 	  |A 	      |101       |
+|104   |Amy 	  |A 	      |101       |
+|105   |Anne 	  |A 	      |101       |
+|106   |Ron 	  |B 	      |101       |
++------+----------+-----------+----------+
+给定 Employee 表，请编写一个SQL查询来查找至少有5名直接下属的经理。对于上表，您的SQL查询应该返回：
+
++-------+
+| Name  |
++-------+
+| John  |
++-------+
+注意:
+没有人是自己的下属。
+
+
+
+Mysql：
+
+自联结
+
+`select e1.Name`
+
+`from Employee e1,Employee e2`
+
+`where e1.Id = e2.ManagerId`
+
+`group by e1.Name`
+
+`having count(e2.Id) >= 5` 
+
+相关子查询：
+
+相关子查询的执行依赖于外部查询。多数情况下是子查询的WHERE子句中引用了外部查询的表。
+执行过程：
+（1）从外层查询中取出一个元组，将元组相关列的值传给内层查询。
+（2）执行内层查询，得到子查询操作的值。
+（3）外查询根据子查询返回的结果或结果集得到满足条件的行。
+（4）然后外层查询取出下一个元组重复做步骤1-3，直到外层的元组全部处理完毕。
+
+`select Name`
+
+`from Employee`
+
+`where Id in (`
+
+  `select ManagerId`
+
+  `from Employee`
+
+  `group by ManagerId`
+
+  `having count(*) >= 5`
+
+`)`
